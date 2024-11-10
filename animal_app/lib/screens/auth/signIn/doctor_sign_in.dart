@@ -1,4 +1,6 @@
 import 'package:animal_app/components/custom_text.dart';
+import 'package:animal_app/screens/auth/signup/doctor_sign_up.dart';
+import 'package:animal_app/screens/doctor/online_visit_doctor.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/sign_in_form.dart';
@@ -31,8 +33,20 @@ class _DoctorSignInState extends State<DoctorSignIn> {
         doUsernameController: doUsernameController,
         doPasswordController: doPasswordController,
         size: size,
-        signIn: () {},
-        signUp: () {},
+        signIn: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const OnlineVisitDoctor(),
+              ));
+        },
+        signUp: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const DoctorSignUp(),
+              ));
+        },
       ),
     );
   }

@@ -1,5 +1,7 @@
 import 'package:animal_app/components/custom_text.dart';
 import 'package:animal_app/components/sign_in_form.dart';
+import 'package:animal_app/screens/auth/signup/farmer_sign_up.dart';
+import 'package:animal_app/screens/farmer/animal_category.dart';
 import 'package:flutter/material.dart';
 
 class FarmerSignIn extends StatefulWidget {
@@ -30,8 +32,20 @@ class _FarmerSignInState extends State<FarmerSignIn> {
           doUsernameController: faUsernameController,
           doPasswordController: faPasswordController,
           size: size,
-          signIn: () {},
-          signUp: () {},
+          signIn: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AnimalCategory(),
+                ));
+          },
+          signUp: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const FarmerSignUp(),
+                ));
+          },
         ));
   }
 }

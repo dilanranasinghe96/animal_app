@@ -1,4 +1,4 @@
-import 'package:animal_app/screens/auth/signup/doctor_sign_up.dart';
+import 'package:animal_app/screens/doctor/online_appoinments.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const DoctorSignUp(),
+      home: const OnlineAppoinments(),
     );
   }
 }

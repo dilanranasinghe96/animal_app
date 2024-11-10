@@ -2,15 +2,16 @@ import 'package:animal_app/components/sign_up_form.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/custom_text.dart';
+import '../signIn/farmer_sign_in.dart';
 
-class DoctorSignUp extends StatefulWidget {
-  const DoctorSignUp({super.key});
+class FarmerSignUp extends StatefulWidget {
+  const FarmerSignUp({super.key});
 
   @override
-  State<DoctorSignUp> createState() => _DoctorSignUpState();
+  State<FarmerSignUp> createState() => _FarmerSignUpState();
 }
 
-class _DoctorSignUpState extends State<DoctorSignUp> {
+class _FarmerSignUpState extends State<FarmerSignUp> {
   TextEditingController faUsernameController = TextEditingController();
   TextEditingController faPasswordController = TextEditingController();
 
@@ -30,8 +31,20 @@ class _DoctorSignUpState extends State<DoctorSignUp> {
       body: SignUpForm(
           doUsernameController: faUsernameController,
           doPasswordController: faPasswordController,
-          signIn: () {},
-          signUp: () {},
+          signIn: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const FarmerSignIn(),
+                ));
+          },
+          signUp: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const FarmerSignIn(),
+                ));
+          },
           size: size),
     );
   }
