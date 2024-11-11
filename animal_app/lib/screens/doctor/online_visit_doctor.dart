@@ -29,7 +29,7 @@ class _OnlineVisitDoctorState extends State<OnlineVisitDoctor> {
                 fsize: 40,
                 fweight: FontWeight.bold),
             CustomButton(
-              size: size,
+         
               ontap: () {
                 Navigator.push(
                     context,
@@ -47,7 +47,6 @@ class _OnlineVisitDoctorState extends State<OnlineVisitDoctor> {
               height: 10,
             ),
             CustomButton(
-                size: size,
                 ontap: () {
                   Navigator.push(
                       context,

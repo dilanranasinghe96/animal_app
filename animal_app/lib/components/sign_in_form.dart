@@ -56,7 +56,6 @@ class SignInForm extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: CustomButton(
-                  size: size,
                   ontap: signIn,
                   text: 'Sign in',
                   buttonColor: Colors.brown,

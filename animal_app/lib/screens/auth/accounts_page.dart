@@ -22,7 +22,6 @@ class AccountsPage extends StatelessWidget {
                 fsize: 40,
                 fweight: FontWeight.bold),
             CustomButton(
-              size: size,
               ontap: () {
                 Navigator.push(
                     context,
@@ -40,7 +39,6 @@ class AccountsPage extends StatelessWidget {
               height: 10,
             ),
             CustomButton(
-                size: size,
                 ontap: () {
                   Navigator.push(
                       context,

@@ -55,7 +55,6 @@ class SignUpForm extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: CustomButton(
-                  size: size,
                   ontap: signUp,
                   text: 'Sign up',
                   buttonColor: Colors.brown,

@@ -1,4 +1,4 @@
-import 'package:animal_app/screens/doctor/online_appoinments.dart';
+import 'package:animal_app/screens/farmer/animal_category.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const OnlineAppoinments(),
+      home: const AnimalCategory(),
     );
   }
 }
