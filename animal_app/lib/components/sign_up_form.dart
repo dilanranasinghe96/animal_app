@@ -23,82 +23,93 @@ class SignUpForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomText(
-              text: 'Username',
-              color: Colors.black,
-              fsize: 20,
-              fweight: FontWeight.w200),
-          CustomTextField(
-              label: 'username',
-              controller: doUsernameController,
-              prefix: Icons.person),
-          const SizedBox(
-            height: 20,
-          ),
-          CustomText(
-              text: 'Password',
-              color: Colors.black,
-              fsize: 20,
-              fweight: FontWeight.w200),
-          CustomTextField(
-            label: 'password',
-            controller: doPasswordController,
-            prefix: Icons.lock,
-            isPassword: true,
-          ),
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CustomButton(
-                  ontap: signUp,
-                  text: 'Sign up',
-                  buttonColor: Colors.brown,
-                  textColor: Colors.white,
-                  height: 60,
-                  width: size.width * 0.5),
-            ),
-          ),
-          const Row(
+      padding: const EdgeInsets.all(16.0),
+      child: Center(
+        child: SizedBox(
+          height: size.height * 0.45,
+          child: Column(
             children: [
               Expanded(
-                  child: Divider(
-                thickness: 1,
-                color: Colors.black,
-              )),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text('OR'),
+                  flex: 1,
+                  child: Container(
+                    width: size.width,
+                    decoration: const BoxDecoration(
+                        color: Color(0xFF004fff),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10))),
+                    child: Center(
+                      child: CustomText(
+                          text: 'General Information',
+                          color: Colors.white,
+                          fsize: 20,
+                          fweight: FontWeight.w300),
+                    ),
+                  )),
+              Expanded(
+                flex: 6,
+                child: Container(
+                  decoration: const BoxDecoration(
+                      color: Color(0xFF90e0ef),
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10))),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CustomTextField(
+                          label: 'username',
+                          controller: doUsernameController,
+                          prefix: Icons.person),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomTextField(
+                        label: 'password',
+                        controller: doPasswordController,
+                        prefix: Icons.lock,
+                        isPassword: true,
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: CustomButton(
+                              ontap: signIn,
+                              text: 'Sign up',
+                              buttonColor: const Color(0xFF004fff),
+                              textColor: Colors.white,
+                              height: 50,
+                              width: size.width * 0.5),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomText(
+                              text: 'Already have account?',
+                              color: Colors.black,
+                              fsize: 18,
+                              fweight: FontWeight.w200),
+                          TextButton(
+                              onPressed: signUp,
+                              child: CustomText(
+                                  text: 'Sign in',
+                                  color: Colors.black,
+                                  fsize: 18,
+                                  fweight: FontWeight.bold))
+                        ],
+                      )
+                    ],
+                  ),
+                ),
               ),
-              Expanded(
-                  child: Divider(
-                thickness: 1,
-                color: Colors.black,
-              ))
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomText(
-                  text: 'Already i have an account ',
-                  color: Colors.black,
-                  fsize: 18,
-                  fweight: FontWeight.w200),
-              TextButton(
-                  onPressed: signIn,
-                  child: CustomText(
-                      text: 'Sign in',
-                      color: Colors.black,
-                      fsize: 18,
-                      fweight: FontWeight.bold))
-            ],
-          )
-        ],
+        ),
       ),
     );
   }

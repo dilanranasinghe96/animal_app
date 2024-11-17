@@ -1,3 +1,4 @@
+import 'package:animal_app/components/custom_background.dart';
 import 'package:animal_app/components/custom_text.dart';
 import 'package:animal_app/screens/doctor/appoinments_details.dart';
 import 'package:flutter/material.dart';
@@ -32,28 +33,30 @@ class _OnlineAppoinmentsState extends State<OnlineAppoinments> {
             fsize: 25,
             fweight: FontWeight.w400),
       ),
-      body: ListView.builder(
-        scrollDirection: Axis.vertical,
-        itemCount: online.length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: ListTile(
-              hoverColor: Colors.amberAccent,
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AppoinmentsDetails(),
-                    ));
-              },
-              title: CustomText(
-                  text: online[index],
-                  color: Colors.black,
-                  fsize: 20,
-                  fweight: FontWeight.w300),
-            ),
-          );
-        },
+      body: CustomBackground(
+        child: ListView.builder(
+          scrollDirection: Axis.vertical,
+          itemCount: online.length,
+          itemBuilder: (context, index) {
+            return Card(
+              child: ListTile(
+                hoverColor: Colors.amberAccent,
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AppoinmentsDetails(),
+                      ));
+                },
+                title: CustomText(
+                    text: online[index],
+                    color: Colors.black,
+                    fsize: 20,
+                    fweight: FontWeight.w300),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

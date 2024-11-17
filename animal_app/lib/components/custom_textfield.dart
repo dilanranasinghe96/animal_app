@@ -23,7 +23,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return SizedBox(
-      width: size.width * 0.9,
+      width: size.width * 0.6,
       child: TextField(
           cursorColor: Colors.black,
           controller: widget.controller,
