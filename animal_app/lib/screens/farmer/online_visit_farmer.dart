@@ -1,3 +1,4 @@
+import 'package:animal_app/components/online_visit.dart';
 import 'package:flutter/material.dart';
 
 class OnlineVisitFarmer extends StatefulWidget {
@@ -10,6 +11,15 @@ class OnlineVisitFarmer extends StatefulWidget {
 class _OnlineVisitFarmerState extends State<OnlineVisitFarmer> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return  Scaffold(
+      body: OnlineVisit(onlineRoute: () {
+        
+      },
+      visitRoute: () {
+        
+        
+      },
+      ),
+    );
   }
 }
