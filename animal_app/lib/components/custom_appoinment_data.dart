@@ -26,7 +26,7 @@ class CustomAppoinmentData extends StatelessWidget {
             fsize: 18,
             fweight: FontWeight.w300),
         Container(
-          width: size.width * 0.7,
+          width: size.width * 0.8,
           height: isMessage == true ? size.height * 0.3 : null,
           decoration: BoxDecoration(
               color: const Color(0xFFcaf0f8),

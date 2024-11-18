@@ -29,6 +29,7 @@ class _AnimalCategoryState extends State<AnimalCategory> {
         body: CustomBackground(
           child: Center(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 AnimalButton(
                   animal: 'Cow',

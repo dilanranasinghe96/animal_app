@@ -16,10 +16,11 @@ class MedicinePage extends StatefulWidget {
 class _MedicinePageState extends State<MedicinePage> {
   PlatformFile? _bill;
 
+  // File picker function to allow doctors to upload a bill
   Future<void> _pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
-      allowedExtensions: ['jpg', 'jpeg', 'png', 'pdf'],
+      allowedExtensions: ['jpg', 'jpeg', 'png'], // Only image files allowed
     );
 
     if (result != null) {
@@ -28,6 +29,8 @@ class _MedicinePageState extends State<MedicinePage> {
       });
     }
   }
+
+  final TextEditingController medicineController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,90 +46,97 @@ class _MedicinePageState extends State<MedicinePage> {
           fweight: FontWeight.w400,
         ),
       ),
-      body: CustomBackground(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Center(
+      body: Stack(
+        children: [
+          // Background and Scrollable Content
+          CustomBackground(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding:
+                    const EdgeInsets.only(bottom: 80.0), // Space for button
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      width: size.width * 0.8,
-                      height: size.height * 0.4,
-                      decoration: const BoxDecoration(
+                    const SizedBox(height: 16),
+                    // Medicine Instructions Section
+                    Center(
+                      child: Container(
+                        width: size.width * 0.8,
+                        padding: const EdgeInsets.all(16),
+                        decoration: const BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(5))),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: CustomText(
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomText(
                               text: 'Medicine and Instructions',
                               color: Colors.black,
                               fsize: 20,
                               fweight: FontWeight.w500,
                             ),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Container(
-                            decoration: const BoxDecoration(
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(5))),
-                            width: size.width * 0.7,
-                            child: const TextField(
-                              decoration: InputDecoration(
+                            const SizedBox(height: 10),
+                            TextField(
+                              controller: medicineController,
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(5)),
                                 ),
-                                // label: Text('Medicine and Instructions'),
                               ),
-                              maxLines: 8,
+                              maxLines: 9,
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const SizedBox(height: 10),
-                    CustomText(
-                      text: 'Bill:',
-                      color: Colors.black,
-                      fsize: 20,
-                      fweight: FontWeight.w500,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    ElevatedButton(
-                      style: const ButtonStyle(
-                          backgroundColor:
-                              WidgetStatePropertyAll(Color(0xFF004fff))),
-                      onPressed: _pickFile,
-                      child: CustomText(
+
+                    const SizedBox(height: 30),
+                    Center(
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF004fff),
+                        ),
+                        onPressed: _pickFile,
+                        child: CustomText(
                           text: 'Attach Bill',
                           color: Colors.white,
                           fsize: 20,
-                          fweight: FontWeight.w400),
+                          fweight: FontWeight.w400,
+                        ),
+                      ),
                     ),
                     if (_bill != null)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Text('Selected File: ${_bill!.name}'),
+                      Center(
+                        child: Column(
+                          children: [
+                            const SizedBox(height: 10),
+                            Container(
+                              width: size.width * 0.8,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Image.memory(
+                                _bill!.bytes!,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                          ],
+                        ),
                       ),
                   ],
                 ),
               ),
-              SizedBox(
-                height: size.height * 0.2,
-              ),
-              CustomButton(
+            ),
+          ),
+          // Fixed Button at the Bottom
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: CustomButton(
                   ontap: () {
                     Navigator.push(
                         context,
@@ -138,10 +148,10 @@ class _MedicinePageState extends State<MedicinePage> {
                   buttonColor: const Color(0xFF004fff),
                   textColor: Colors.white,
                   height: size.height * 0.08,
-                  width: size.width * 0.6),
-            ],
+                  width: size.width * 0.5),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

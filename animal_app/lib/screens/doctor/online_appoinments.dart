@@ -29,7 +29,7 @@ class _OnlineAppoinmentsState extends State<OnlineAppoinments> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF00b4d8),
         title: CustomText(
-            text: 'Appoinments List(Online)',
+            text: 'Appointments List(Online)',
             color: Colors.black,
             fsize: 25,
             fweight: FontWeight.w400),

@@ -18,7 +18,14 @@ class _AppoinmentsDetailsState extends State<AppoinmentsDetails> {
   String fContactNo = '0771234567';
   String fLocation = 'Dambulla';
   String fMessage =
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ';
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.';
+
+  // Sample attachments
+  final List<String> attachments = [
+    'lib/assets/background.jpg',
+    'lib/assets/background.jpg',
+    'lib/assets/background.jpg',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -33,65 +40,106 @@ class _AppoinmentsDetailsState extends State<AppoinmentsDetails> {
             fsize: 25,
             fweight: FontWeight.w400),
       ),
-      body: CustomBackground(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Stack(
-            children: [
-              Center(
+      body: Stack(
+        children: [
+          CustomBackground(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  left: 16.0,
+                  right: 16.0,
+                  bottom: 80.0), // Extra bottom padding for button
+              child: SingleChildScrollView(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      height: size.height * 0.35,
-                      width: size.width * 0.8,
+                    Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CustomAppoinmentData(
-                            title: 'Name:',
-                            data: fName,
+                          const SizedBox(height: 16.0),
+                          Container(
+                            decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CustomAppoinmentData(
+                                  title: 'Name:',
+                                  data: fName,
+                                ),
+                                CustomAppoinmentData(
+                                  title: 'Contact number:',
+                                  data: fContactNo,
+                                ),
+                                CustomAppoinmentData(
+                                  title: 'Location:',
+                                  data: fLocation,
+                                ),
+                              ],
+                            ),
                           ),
+                          const SizedBox(height: 16.0),
                           CustomAppoinmentData(
-                            title: 'Contact number:',
-                            data: fContactNo,
-                          ),
-                          CustomAppoinmentData(
-                            title: 'Location:',
-                            data: fLocation,
-                          ),
+                              isMessage: true,
+                              title: 'Message:',
+                              data: fMessage),
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CustomAppoinmentData(
-                          isMessage: true, title: 'Message:', data: fMessage),
+                    const SizedBox(height: 16.0),
+                    CustomText(
+                        text: 'Attachments:',
+                        color: Colors.black,
+                        fsize: 18,
+                        fweight: FontWeight.w600),
+                    const SizedBox(height: 8.0),
+                    ListView.builder(
+                      itemCount: attachments.length,
+                      shrinkWrap: true,
+                      physics:
+                          const NeverScrollableScrollPhysics(), // Let parent scroll
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.network(
+                              attachments[index],
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
               ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: CustomButton(
-                    ontap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const MedicinePage(),
-                          ));
-                    },
-                    text: 'Get Action',
-                    buttonColor: const Color(0xFF004fff),
-                    textColor: Colors.white,
-                    height: size.height * 0.08,
-                    width: size.width * 0.5),
-              ),
-            ],
+            ),
           ),
-        ),
+          // Fixed Button at Bottom
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: CustomButton(
+                  ontap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MedicinePage(),
+                        ));
+                  },
+                  text: 'Get Action',
+                  buttonColor: const Color(0xFF004fff),
+                  textColor: Colors.white,
+                  height: size.height * 0.08,
+                  width: size.width * 0.5),
+            ),
+          ),
+        ],
       ),
     );
   }
