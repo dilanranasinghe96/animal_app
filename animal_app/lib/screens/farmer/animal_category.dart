@@ -1,3 +1,4 @@
+import 'package:animal_app/components/custom_background.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/animal_button.dart';
@@ -18,28 +19,31 @@ class _AnimalCategoryState extends State<AnimalCategory> {
 
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: const Color(0xFF00b4d8),
           title: CustomText(
               text: 'Animal Category',
               color: Colors.black,
               fsize: 25,
               fweight: FontWeight.w400),
         ),
-        body: Center(
-          child: Column(
-            children: [
-              AnimalButton(
-                animal: 'Cow',
-              ),
-              AnimalButton(
-                animal: 'Pig',
-              ),
-              AnimalButton(
-                animal: 'Goat',
-              ),
-              AnimalButton(
-                animal: 'Other',
-              ),
-            ],
+        body: CustomBackground(
+          child: Center(
+            child: Column(
+              children: [
+                AnimalButton(
+                  animal: 'Cow',
+                ),
+                AnimalButton(
+                  animal: 'Pig',
+                ),
+                AnimalButton(
+                  animal: 'Goat',
+                ),
+                AnimalButton(
+                  animal: 'Other',
+                ),
+              ],
+            ),
           ),
         ));
   }

@@ -93,7 +93,7 @@ class SignInForm extends StatelessWidget {
                               text: 'Dont have account?',
                               color: Colors.black,
                               fsize: 18,
-                              fweight: FontWeight.w200),
+                              fweight: FontWeight.w400),
                           TextButton(
                               onPressed: signUp,
                               child: CustomText(

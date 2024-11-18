@@ -23,21 +23,23 @@ class CustomAppoinmentData extends StatelessWidget {
         CustomText(
             text: title,
             color: Colors.black,
-            fsize: 20,
+            fsize: 18,
             fweight: FontWeight.w300),
         Container(
-          width: size.width * 0.8,
+          width: size.width * 0.7,
           height: isMessage == true ? size.height * 0.3 : null,
           decoration: BoxDecoration(
-              border: Border.all(), borderRadius: BorderRadius.circular(5)),
+              color: const Color(0xFFcaf0f8),
+              border: Border.all(color: Colors.white),
+              borderRadius: BorderRadius.circular(5)),
           child: Padding(
             padding: const EdgeInsets.all(4.0),
             child: SingleChildScrollView(
               child: CustomText(
                   text: data,
                   color: Colors.black,
-                  fsize: 20,
-                  fweight: FontWeight.w600),
+                  fsize: 18,
+                  fweight: FontWeight.w500),
             ),
           ),
         ),

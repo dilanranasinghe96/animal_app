@@ -1,14 +1,11 @@
 import 'package:animal_app/screens/doctor/online_visit_doctor.dart';
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
+import 'package:animal_app/screens/splash%20screen/splash_screen.dart';
+
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => const MyApp(), // Wrap your app
-    ),
+    const MyApp(),
   );
 }
 
@@ -24,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const OnlineVisitDoctor(),
+      home: const SplashScreen(),
     );
   }
 }

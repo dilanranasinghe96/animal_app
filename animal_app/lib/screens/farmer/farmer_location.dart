@@ -1,3 +1,4 @@
+import 'package:animal_app/components/custom_background.dart';
 import 'package:animal_app/components/custom_button.dart';
 import 'package:animal_app/components/custom_text.dart';
 import 'package:animal_app/screens/farmer/doctor_list.dart';
@@ -34,95 +35,104 @@ class _FarmerLocationState extends State<FarmerLocation> {
     final List<String> districts = provinceDistrictMap[selectedProvince]!;
 
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Column(
-              children: [
-                CustomText(
-                  text: 'Select Province:',
-                  color: Colors.black,
-                  fsize: 20,
-                  fweight: FontWeight.w400,
-                ),
-                Container(
-                  width: size.width * 0.5,
-                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(10.0),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF00b4d8),
+      ),
+      body: CustomBackground(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  CustomText(
+                    text: 'Select Province:',
+                    color: Colors.black,
+                    fsize: 20,
+                    fweight: FontWeight.w400,
                   ),
-                  child: DropdownButton<String>(
-                    value: selectedProvince,
-                    isExpanded: true,
-                    underline: const SizedBox(), // Remove the default underline
-                    items: provinceDistrictMap.keys.map((String province) {
-                      return DropdownMenuItem<String>(
-                        value: province,
-                        child: Text(province),
-                      );
-                    }).toList(),
-                    onChanged: (String? value) {
-                      setState(() {
-                        selectedProvince = value!;
-                        // Reset the selected district when province changes
-                        selectedDistrict = null;
-                      });
-                    },
+                  Container(
+                    width: size.width * 0.5,
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: DropdownButton<String>(
+                      value: selectedProvince,
+                      isExpanded: true,
+                      underline:
+                          const SizedBox(), // Remove the default underline
+                      items: provinceDistrictMap.keys.map((String province) {
+                        return DropdownMenuItem<String>(
+                          value: province,
+                          child: Text(province),
+                        );
+                      }).toList(),
+                      onChanged: (String? value) {
+                        setState(() {
+                          selectedProvince = value!;
+                          // Reset the selected district when province changes
+                          selectedDistrict = null;
+                        });
+                      },
+                    ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                CustomText(
-                  text: 'Select District:',
-                  color: Colors.black,
-                  fsize: 20,
-                  fweight: FontWeight.w400,
-                ),
-                Container(
-                  width: size.width * 0.5,
-                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(10.0),
+                  const SizedBox(height: 20),
+                  CustomText(
+                    text: 'Select District:',
+                    color: Colors.black,
+                    fsize: 20,
+                    fweight: FontWeight.w400,
                   ),
-                  child: DropdownButton<String>(
-                    value: selectedDistrict,
-                    isExpanded: true,
-                    underline: const SizedBox(), // Remove the default underline
-                    hint: const Text('Choose a district'),
-                    items: districts.map((String district) {
-                      return DropdownMenuItem<String>(
-                        value: district,
-                        child: Text(district),
-                      );
-                    }).toList(),
-                    onChanged: (String? value) {
-                      setState(() {
-                        selectedDistrict = value!;
-                      });
-                    },
+                  Container(
+                    width: size.width * 0.5,
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: DropdownButton<String>(
+                      value: selectedDistrict,
+                      isExpanded: true,
+                      underline:
+                          const SizedBox(), // Remove the default underline
+                      hint: const Text('Choose a district'),
+                      items: districts.map((String district) {
+                        return DropdownMenuItem<String>(
+                          value: district,
+                          child: Text(district),
+                        );
+                      }).toList(),
+                      onChanged: (String? value) {
+                        setState(() {
+                          selectedDistrict = value!;
+                        });
+                      },
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                CustomButton(
-                    ontap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const DoctorList(),
-                          ));
-                    },
-                    text: 'Next',
-                    buttonColor: Colors.amber,
-                    textColor: Colors.black,
-                    height: size.height * 0.07,
-                    width: size.width * 0.5)
-              ],
-            ),
-          ],
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  CustomButton(
+                      ontap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const DoctorList(),
+                            ));
+                      },
+                      text: 'Next',
+                      buttonColor: const Color(0xFF004fff),
+                      textColor: Colors.white,
+                      height: size.height * 0.07,
+                      width: size.width * 0.4)
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

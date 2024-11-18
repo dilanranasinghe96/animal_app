@@ -17,6 +17,9 @@ class _OnlineVisitDoctorState extends State<OnlineVisitDoctor> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF00b4d8),
+      ),
       body: OnlineVisit(
         onlineRoute: () {
           Navigator.push(

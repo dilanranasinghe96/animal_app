@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../components/custom_background.dart';
 import '../../components/custom_text.dart';
+import '../auth/accounts_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,13 +16,13 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // Future.delayed(const Duration(seconds: 3), () {
-    //   Navigator.push(
-    //       context,
-    //       MaterialPageRoute(
-    //         builder: (context) => const AccountsPage(),
-    //       ));
-    // });
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const AccountsPage(),
+          ));
+    });
   }
 
   @override

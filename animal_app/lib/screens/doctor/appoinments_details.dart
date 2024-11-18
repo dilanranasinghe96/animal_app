@@ -1,3 +1,4 @@
+import 'package:animal_app/components/custom_background.dart';
 import 'package:animal_app/components/custom_button.dart';
 import 'package:animal_app/screens/doctor/medicine_page.dart';
 import 'package:flutter/material.dart';
@@ -25,53 +26,71 @@ class _AppoinmentsDetailsState extends State<AppoinmentsDetails> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color(0xFF00b4d8),
         title: CustomText(
             text: 'Appoinments Details',
             color: Colors.black,
             fsize: 25,
             fweight: FontWeight.w400),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Stack(
-          children: [
-            Center(
-              child: Column(
-                children: [
-                  CustomAppoinmentData(
-                    title: 'Name:',
-                    data: fName,
-                  ),
-                  CustomAppoinmentData(
-                    title: 'Contact number:',
-                    data: fContactNo,
-                  ),
-                  CustomAppoinmentData(
-                    title: 'Location:',
-                    data: fLocation,
-                  ),
-                  CustomAppoinmentData(
-                      isMessage: true, title: 'Message:', data: fMessage),
-                ],
+      body: CustomBackground(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Stack(
+            children: [
+              Center(
+                child: Column(
+                  children: [
+                    Container(
+                      decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      height: size.height * 0.35,
+                      width: size.width * 0.8,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomAppoinmentData(
+                            title: 'Name:',
+                            data: fName,
+                          ),
+                          CustomAppoinmentData(
+                            title: 'Contact number:',
+                            data: fContactNo,
+                          ),
+                          CustomAppoinmentData(
+                            title: 'Location:',
+                            data: fLocation,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: CustomAppoinmentData(
+                          isMessage: true, title: 'Message:', data: fMessage),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: CustomButton(
-                  ontap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const MedicinePage(),
-                        ));
-                  },
-                  text: 'Get Action',
-                  buttonColor: Colors.amber,
-                  textColor: Colors.black,
-                  height: size.height * 0.08,
-                  width: size.width * 0.6),
-            ),
-          ],
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: CustomButton(
+                    ontap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MedicinePage(),
+                          ));
+                    },
+                    text: 'Get Action',
+                    buttonColor: const Color(0xFF004fff),
+                    textColor: Colors.white,
+                    height: size.height * 0.08,
+                    width: size.width * 0.5),
+              ),
+            ],
+          ),
         ),
       ),
     );

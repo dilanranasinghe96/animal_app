@@ -1,3 +1,4 @@
+import 'package:animal_app/components/custom_background.dart';
 import 'package:animal_app/components/sign_up_form.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +22,7 @@ class _FarmerSignUpState extends State<FarmerSignUp> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color(0xFF00b4d8),
         centerTitle: true,
         title: CustomText(
             text: 'Farmer',
@@ -28,24 +30,26 @@ class _FarmerSignUpState extends State<FarmerSignUp> {
             fsize: 30,
             fweight: FontWeight.bold),
       ),
-      body: SignUpForm(
-          doUsernameController: faUsernameController,
-          doPasswordController: faPasswordController,
-          signIn: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const FarmerSignIn(),
-                ));
-          },
-          signUp: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const FarmerSignIn(),
-                ));
-          },
-          size: size),
+      body: CustomBackground(
+        child: SignUpForm(
+            doUsernameController: faUsernameController,
+            doPasswordController: faPasswordController,
+            signIn: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const FarmerSignIn(),
+                  ));
+            },
+            signUp: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const FarmerSignIn(),
+                  ));
+            },
+            size: size),
+      ),
     );
   }
 }
