@@ -1,4 +1,4 @@
-import 'package:animal_app/components/custom_background.dart';
+import 'package:animal_app/components/custom_background_doctor.dart';
 import 'package:animal_app/components/sign_up_form.dart';
 import 'package:animal_app/screens/auth/signIn/doctor_sign_in.dart';
 import 'package:flutter/material.dart';
@@ -22,18 +22,38 @@ class _DoctorSignUpState extends State<DoctorSignUp> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF00b4d8),
-        centerTitle: true,
-        title: CustomText(
-            text: 'Doctor',
-            color: Colors.black,
-            fsize: 30,
-            fweight: FontWeight.bold),
+        automaticallyImplyLeading: false,
+        actions: [
+          SizedBox(
+            width: size.width,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const BackButton(
+                    color: Color.fromRGBO(0, 76, 151, 1),
+                  ),
+                  CustomText(
+                      text: 'Doctor',
+                      color: const Color.fromRGBO(0, 76, 151, 1),
+                      fsize: 25,
+                      fweight: FontWeight.bold),
+                  const Icon(
+                    Icons.menu,
+                    color: Color.fromRGBO(0, 76, 151, 1),
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
       ),
-      body: CustomBackground(
+      body: CustomBackgroundDoctor(
         child: SignUpForm(
             doUsernameController: doUsernameController,
             doPasswordController: doPasswordController,
+            color: const Color.fromRGBO(45, 73, 212, 1),
             signIn: () {
               Navigator.push(
                   context,

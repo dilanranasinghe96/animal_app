@@ -1,4 +1,4 @@
-import 'package:animal_app/components/custom_background.dart';
+import 'package:animal_app/components/custom_background_farmer.dart';
 import 'package:animal_app/components/sign_up_form.dart';
 import 'package:flutter/material.dart';
 
@@ -22,18 +22,42 @@ class _FarmerSignUpState extends State<FarmerSignUp> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF00b4d8),
-        centerTitle: true,
-        title: CustomText(
-            text: 'Farmer',
-            color: Colors.black,
-            fsize: 30,
-            fweight: FontWeight.bold),
+        automaticallyImplyLeading: false,
+        actions: [
+          SizedBox(
+            width: size.width,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const BackButton(
+                    color: Color.fromRGBO(3, 139, 57, 1),
+                  ),
+                  Row(
+                    children: [
+                      CustomText(
+                          text: 'Farmer',
+                          color: const Color.fromRGBO(3, 139, 57, 1),
+                          fsize: 25,
+                          fweight: FontWeight.bold),
+                    ],
+                  ),
+                  const Icon(
+                    Icons.menu,
+                    color: Color.fromRGBO(3, 139, 57, 1),
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
       ),
-      body: CustomBackground(
+      body: CustomBackgroundFarmer(
         child: SignUpForm(
             doUsernameController: faUsernameController,
             doPasswordController: faPasswordController,
+            color: const Color.fromRGBO(5, 204, 58, 1),
             signIn: () {
               Navigator.push(
                   context,

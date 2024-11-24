@@ -1,4 +1,4 @@
-import 'package:animal_app/components/custom_background.dart';
+import 'package:animal_app/components/custom_background_doctor.dart';
 import 'package:animal_app/components/custom_button.dart';
 import 'package:animal_app/screens/doctor/medicine_page.dart';
 import 'package:flutter/material.dart';
@@ -33,16 +33,33 @@ class _AppoinmentsDetailsState extends State<AppoinmentsDetails> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF00b4d8),
-        title: CustomText(
-            text: 'Appoinments Details',
-            color: Colors.black,
-            fsize: 25,
-            fweight: FontWeight.w400),
+        backgroundColor: const Color.fromRGBO(0, 104, 254, 0.50),
+        automaticallyImplyLeading: false,
+        actions: [
+          SizedBox(
+            width: size.width,
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  BackButton(
+                    color: Color.fromRGBO(0, 76, 151, 1),
+                  ),
+                  //
+                  Icon(
+                    Icons.menu,
+                    color: Color.fromRGBO(0, 76, 151, 1),
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
       ),
       body: Stack(
         children: [
-          CustomBackground(
+          CustomBackgroundDoctor(
             child: Padding(
               padding: const EdgeInsets.only(
                   left: 16.0,
@@ -90,11 +107,14 @@ class _AppoinmentsDetailsState extends State<AppoinmentsDetails> {
                       ),
                     ),
                     const SizedBox(height: 16.0),
-                    CustomText(
-                        text: 'Attachments:',
-                        color: Colors.black,
-                        fsize: 18,
-                        fweight: FontWeight.w600),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: CustomText(
+                          text: 'Attachments:',
+                          color: Colors.black,
+                          fsize: 18,
+                          fweight: FontWeight.w600),
+                    ),
                     const SizedBox(height: 8.0),
                     ListView.builder(
                       itemCount: attachments.length,
@@ -133,7 +153,7 @@ class _AppoinmentsDetailsState extends State<AppoinmentsDetails> {
                         ));
                   },
                   text: 'Get Action',
-                  buttonColor: const Color(0xFF004fff),
+                  buttonColor: const Color.fromRGBO(45, 73, 212, 0.9),
                   textColor: Colors.white,
                   height: size.height * 0.08,
                   width: size.width * 0.5),

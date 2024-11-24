@@ -1,4 +1,4 @@
-import 'package:animal_app/components/custom_background.dart';
+import 'package:animal_app/components/custom_background_doctor.dart';
 import 'package:animal_app/screens/auth/signIn/doctor_sign_in.dart';
 import 'package:animal_app/screens/auth/signIn/farmer_sign_in.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +12,7 @@ class AccountsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: CustomBackground(
+      body: CustomBackgroundDoctor(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

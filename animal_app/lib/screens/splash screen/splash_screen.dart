@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../components/custom_background.dart';
+import '../../components/custom_background_doctor.dart';
 import '../../components/custom_text.dart';
 import '../auth/accounts_page.dart';
 
@@ -29,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: CustomBackground(
+      body: CustomBackgroundDoctor(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

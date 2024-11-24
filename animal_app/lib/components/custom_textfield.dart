@@ -22,21 +22,19 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return SizedBox(
+    return Container(
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(10))),
       width: size.width * 0.6,
       child: TextField(
           cursorColor: Colors.black,
           controller: widget.controller,
           obscureText: widget.isPassword == false ? !isObscure : isObscure,
           decoration: InputDecoration(
-              enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(
-                color: Colors.black,
-                width: 2,
-              )),
-              focusedBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.purple)),
+              border: InputBorder.none,
               label: Text(widget.label),
+              labelStyle: const TextStyle(color: Colors.black),
               prefixIcon: Icon(widget.prefix),
               suffixIcon: widget.isPassword == true
                   ? GestureDetector(

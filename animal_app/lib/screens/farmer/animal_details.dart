@@ -1,4 +1,4 @@
-import 'package:animal_app/components/custom_background.dart';
+import 'package:animal_app/components/custom_background_farmer.dart';
 import 'package:animal_app/screens/farmer/animal_category.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -37,75 +37,98 @@ class _AnimalDetailsState extends State<AnimalDetails> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF00b4d8),
-        title: CustomText(
-          text: 'Animal Details',
-          color: Colors.black,
-          fsize: 25,
-          fweight: FontWeight.w400,
-        ),
+        automaticallyImplyLeading: false,
+        actions: [
+          SizedBox(
+            width: size.width,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const BackButton(
+                    color: Color.fromRGBO(3, 139, 57, 1),
+                  ),
+                  Row(
+                    children: [
+                      CustomText(
+                          text: 'Animal Details',
+                          color: const Color.fromRGBO(3, 139, 57, 1),
+                          fsize: 25,
+                          fweight: FontWeight.bold),
+                    ],
+                  ),
+                  const Icon(
+                    Icons.menu,
+                    color: Color.fromRGBO(3, 139, 57, 1),
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
       ),
       body: Stack(
         children: [
           // Background and Scrollable Content
-          CustomBackground(
+          CustomBackgroundFarmer(
             child: SingleChildScrollView(
               child: Padding(
                 padding:
                     const EdgeInsets.only(bottom: 80.0), // Space for button
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(height: 20),
                     // Animal Details Section
-                    Center(
-                      child: Container(
-                        width: size.width * 0.8,
-                        padding: const EdgeInsets.all(16),
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                    Container(
+                      width: size.width * 0.8,
+                      padding: const EdgeInsets.all(16),
+                      decoration: const BoxDecoration(
+                        color: Color.fromRGBO(231, 254, 228, 1),
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                      ),
+                      child: const TextField(
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color.fromRGBO(140, 248, 136, 0.29),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
+                          ),
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CustomText(
-                              text: 'Animal Details',
-                              color: Colors.black,
-                              fsize: 20,
-                              fweight: FontWeight.w500,
-                            ),
-                            const SizedBox(height: 10),
-                            const TextField(
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(5)),
-                                ),
-                              ),
-                              maxLines: 9,
-                            ),
-                          ],
-                        ),
+                        maxLines: 9,
                       ),
                     ),
                     const SizedBox(height: 20),
 
                     // Attach Images Section
                     Center(
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF004fff),
-                        ),
-                        onPressed: _pickFiles,
-                        child: CustomText(
-                          text: 'Attach Images',
-                          color: Colors.white,
-                          fsize: 20,
-                          fweight: FontWeight.w400,
+                        child: GestureDetector(
+                      onTap: () {
+                        _pickFiles();
+                      },
+                      child: Container(
+                        width: size.width * 0.8,
+                        height: size.height * 0.2,
+                        decoration: const BoxDecoration(
+                            gradient: LinearGradient(colors: [
+                              Color.fromRGBO(255, 255, 255, 0.7),
+                              Color.fromRGBO(140, 248, 136, 0.7)
+                            ]),
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    'lib/assets/drag_and_drop.png'))),
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: CustomText(
+                              text: 'Animal picture',
+                              color: Colors.black,
+                              fsize: 18,
+                              fweight: FontWeight.w500),
                         ),
                       ),
-                    ),
+                    )),
                     const SizedBox(height: 16),
                     if (_animalImages.isNotEmpty)
                       Padding(
@@ -149,7 +172,7 @@ class _AnimalDetailsState extends State<AnimalDetails> {
                   );
                 },
                 text: 'Send',
-                buttonColor: const Color(0xFF004fff),
+                buttonColor: const Color.fromRGBO(4, 204, 58, 1),
                 textColor: Colors.white,
                 height: size.height * 0.08,
                 width: size.width * 0.6,

@@ -11,6 +11,7 @@ class SignInForm extends StatelessWidget {
     required this.doPasswordController,
     required this.signIn,
     required this.signUp,
+    required this.color,
     required this.size,
   });
 
@@ -18,6 +19,7 @@ class SignInForm extends StatelessWidget {
   final TextEditingController doPasswordController;
   void Function() signIn;
   void Function() signUp;
+  Color color;
   final Size size;
 
   @override
@@ -33,9 +35,9 @@ class SignInForm extends StatelessWidget {
                   flex: 1,
                   child: Container(
                     width: size.width,
-                    decoration: const BoxDecoration(
-                        color: Color(0xFF004fff),
-                        borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                        color: color,
+                        borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(10),
                             topRight: Radius.circular(10))),
                     child: Center(
@@ -50,7 +52,7 @@ class SignInForm extends StatelessWidget {
                 flex: 6,
                 child: Container(
                   decoration: const BoxDecoration(
-                      color: Color(0xFF90e0ef),
+                      color: Color.fromRGBO(243, 243, 255, 0.57),
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(10),
                           bottomRight: Radius.circular(10))),
@@ -79,8 +81,8 @@ class SignInForm extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: CustomButton(
                               ontap: signIn,
-                              text: 'Sign in',
-                              buttonColor: const Color(0xFF004fff),
+                              text: 'Sign In',
+                              buttonColor: color,
                               textColor: Colors.white,
                               height: 50,
                               width: size.width * 0.5),

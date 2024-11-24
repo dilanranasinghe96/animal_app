@@ -11,6 +11,7 @@ class SignUpForm extends StatelessWidget {
     required this.doPasswordController,
     required this.signIn,
     required this.signUp,
+    required this.color,
     required this.size,
   });
 
@@ -18,6 +19,7 @@ class SignUpForm extends StatelessWidget {
   final TextEditingController doPasswordController;
   void Function() signIn;
   void Function() signUp;
+  Color color;
   final Size size;
 
   @override
@@ -33,8 +35,8 @@ class SignUpForm extends StatelessWidget {
                   flex: 1,
                   child: Container(
                     width: size.width,
-                    decoration: const BoxDecoration(
-                        color: Color(0xFF004fff),
+                    decoration:  BoxDecoration(
+                        color: color,
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(10),
                             topRight: Radius.circular(10))),
@@ -50,7 +52,7 @@ class SignUpForm extends StatelessWidget {
                 flex: 6,
                 child: Container(
                   decoration: const BoxDecoration(
-                      color: Color(0xFF90e0ef),
+                      color: Color.fromRGBO(243, 243, 255, 0.57),
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(10),
                           bottomRight: Radius.circular(10))),
@@ -79,8 +81,8 @@ class SignUpForm extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: CustomButton(
                               ontap: signIn,
-                              text: 'Sign up',
-                              buttonColor: const Color(0xFF004fff),
+                              text: 'Sign Up',
+                              buttonColor: color,
                               textColor: Colors.white,
                               height: 50,
                               width: size.width * 0.5),
@@ -90,14 +92,14 @@ class SignUpForm extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CustomText(
-                              text: 'Already have account?',
+                              text: 'Dont have account?',
                               color: Colors.black,
                               fsize: 18,
                               fweight: FontWeight.w400),
                           TextButton(
                               onPressed: signUp,
                               child: CustomText(
-                                  text: 'Sign in',
+                                  text: 'Sign In',
                                   color: Colors.black,
                                   fsize: 18,
                                   fweight: FontWeight.bold))

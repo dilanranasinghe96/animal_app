@@ -29,15 +29,19 @@ class CustomAppoinmentData extends StatelessWidget {
           width: size.width * 0.8,
           height: isMessage == true ? size.height * 0.3 : null,
           decoration: BoxDecoration(
-              color: const Color(0xFFcaf0f8),
-              border: Border.all(color: Colors.white),
-              borderRadius: BorderRadius.circular(5)),
+              color: isMessage == true
+                  ? const Color.fromRGBO(255, 255, 255, 0.22)
+                  : const Color.fromRGBO(203, 229, 243, 0.77),
+              borderRadius: BorderRadius.circular(5),
+              border: isMessage == true
+                  ? Border.all(width: 2, color: Colors.white)
+                  : null),
           child: Padding(
             padding: const EdgeInsets.all(4.0),
             child: SingleChildScrollView(
               child: CustomText(
                   text: data,
-                  color: Colors.black,
+                  color: const Color.fromRGBO(14, 40, 153, 1),
                   fsize: 18,
                   fweight: FontWeight.w500),
             ),

@@ -67,9 +67,19 @@ flutter:
     - lib/assets/splash.png
     - lib/assets/doctor.png
     - lib/assets/farmer.png
-    - lib/assets/online.png
-    - lib/assets/visit.png
+    - lib/assets/online_doctor.png
+    - lib/assets/visit_doctor.png
     - lib/assets/background.jpg
+    - lib/assets/animal_category/cow.png
+    - lib/assets/animal_category/pig.png
+    - lib/assets/animal_category/goat.png
+    - lib/assets/animal_category/other.png
+    - lib/assets/online_farmer.png
+    - lib/assets/visit_farmer.png
+    - lib/assets/srilanka.png
+    - lib/assets/line.png
+    - lib/assets/doctor_dp.png
+    - lib/assets/drag_and_drop.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
