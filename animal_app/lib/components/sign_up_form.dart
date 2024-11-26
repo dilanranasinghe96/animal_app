@@ -7,16 +7,19 @@ import 'custom_textfield.dart';
 class SignUpForm extends StatelessWidget {
   SignUpForm({
     super.key,
-    required this.doUsernameController,
-    required this.doPasswordController,
+    required this.usernameController,
+    required this.emailController,
+    required this.passwordController,
     required this.signIn,
     required this.signUp,
     required this.color,
     required this.size,
   });
 
-  final TextEditingController doUsernameController;
-  final TextEditingController doPasswordController;
+  final TextEditingController usernameController;
+  final TextEditingController emailController;
+
+  final TextEditingController passwordController;
   void Function() signIn;
   void Function() signUp;
   Color color;
@@ -35,9 +38,9 @@ class SignUpForm extends StatelessWidget {
                   flex: 1,
                   child: Container(
                     width: size.width,
-                    decoration:  BoxDecoration(
+                    decoration: BoxDecoration(
                         color: color,
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(10),
                             topRight: Radius.circular(10))),
                     child: Center(
@@ -62,14 +65,21 @@ class SignUpForm extends StatelessWidget {
                     children: [
                       CustomTextField(
                           label: 'username',
-                          controller: doUsernameController,
+                          controller: usernameController,
                           prefix: Icons.person),
                       const SizedBox(
                         height: 20,
                       ),
                       CustomTextField(
+                          label: 'email',
+                          controller: emailController,
+                          prefix: Icons.email),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomTextField(
                         label: 'password',
-                        controller: doPasswordController,
+                        controller: passwordController,
                         prefix: Icons.lock,
                         isPassword: true,
                       ),

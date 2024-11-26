@@ -7,16 +7,17 @@ import 'custom_textfield.dart';
 class SignInForm extends StatelessWidget {
   SignInForm({
     super.key,
-    required this.doUsernameController,
-    required this.doPasswordController,
+    required this.idController,
+    required this.passwordController,
     required this.signIn,
     required this.signUp,
     required this.color,
     required this.size,
   });
 
-  final TextEditingController doUsernameController;
-  final TextEditingController doPasswordController;
+  final TextEditingController idController;
+
+  final TextEditingController passwordController;
   void Function() signIn;
   void Function() signUp;
   Color color;
@@ -61,15 +62,15 @@ class SignInForm extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       CustomTextField(
-                          label: 'username',
-                          controller: doUsernameController,
+                          label: 'ID',
+                          controller: idController,
                           prefix: Icons.person),
                       const SizedBox(
                         height: 20,
                       ),
                       CustomTextField(
                         label: 'password',
-                        controller: doPasswordController,
+                        controller: passwordController,
                         prefix: Icons.lock,
                         isPassword: true,
                       ),
